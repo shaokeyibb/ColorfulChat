@@ -26,7 +26,7 @@ public class ColorfulChat extends JavaPlugin {
     @Override
     public void onEnable(){
         IChatAdaptor adaptor = null;
-        if(getServer().getVersion() == "")
+        if(getServer().getBukkitVersion().contains("1.16"))
         {
             adaptor = new DefaultChatAdaptor();
         }
