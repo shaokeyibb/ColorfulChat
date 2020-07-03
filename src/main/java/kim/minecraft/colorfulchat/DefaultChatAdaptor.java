@@ -1,17 +1,16 @@
 package kim.minecraft.colorfulchat;
 
 import org.bukkit.Color;
-
 import java.util.Random;
 
-public class ColorUtils {
+public class DefaultChatAdaptor implements IChatAdaptor {
 
-    private static Color generatorRandomColor(){
+    private Color generatorRandomColor(){
         Random random = new Random();
         return Color.fromRGB(random.nextInt(255),random.nextInt(255),random.nextInt(255));
     }
 
-    public static String getColoredString(String original){
+    public String getColoredString(String original){
         StringBuilder builder = new StringBuilder();
         for (char c : original.toCharArray()) {
             StringBuilder rgbBuilder = new StringBuilder();
@@ -25,4 +24,12 @@ public class ColorUtils {
         }
         return builder.toString();
     }
+
+    //use in 1.16+
+    @Override
+    public String getColorfulString(String msg) {
+        
+        return getColoredString(msg);
+    }
+    
 }
