@@ -10,7 +10,7 @@ public class DefaultChatAdaptor implements IChatAdaptor {
         return Color.fromRGB(random.nextInt(255),random.nextInt(255),random.nextInt(255));
     }
 
-    public String getColoredString(String original){
+    private String getColoredString(String original){
         StringBuilder builder = new StringBuilder();
         for (char c : original.toCharArray()) {
             StringBuilder rgbBuilder = new StringBuilder();
