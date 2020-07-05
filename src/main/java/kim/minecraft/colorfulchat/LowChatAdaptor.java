@@ -9,7 +9,7 @@ public class LowChatAdaptor implements IChatAdaptor {
         for(int i = 0;i < chars.length;++i)
         {
             builder.append("§");
-            int code = chars[i] % 16;
+            int code = chars[i] % 15;
             builder.append(hex[code]);
             builder.append(chars[i]);
         }
