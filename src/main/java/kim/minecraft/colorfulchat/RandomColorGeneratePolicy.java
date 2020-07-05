@@ -19,7 +19,7 @@ public class RandomColorGeneratePolicy implements IColorGeneratePolicy {
         StringBuilder builder = new StringBuilder();
         for (int i = 0;i < str.length();++i) {
             builder.append("§");
-            builder.append(_colorCodes[_random.nextInt() % _colorCodes.length]);
+            builder.append(_colorCodes[_random.nextInt(_colorCodes.length)]);
             builder.append(str.charAt(i));
         }
         return builder.toString();
