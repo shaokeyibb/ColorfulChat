@@ -1,9 +1,7 @@
 name: ColorfulChat
 main: kim.minecraft.colorfulchat.ColorfulChat
 version: 1.0-SNAPSHOT
-author: shaokeyibb
-
-api-version: 1.16
+author: shaokeyibb & NaturalSharp
 
 commands:
   colorfulchat:
