@@ -14,6 +14,7 @@ public class LowChatAdaptor implements IChatAdaptor {
         {
             builder.append("§");
             builder.append(hex[code]);
+            builder.append(chars[i]);
         }
         return builder.toString();
     }
