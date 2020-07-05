@@ -7,19 +7,19 @@ public class ChatListener implements org.bukkit.event.Listener {
 
     private ColorfulChat _plugin;
 
-    private IChatAdaptor _adaptor;
+    private IColorGeneratePolicy _policy;
 
-    public ChatListener(ColorfulChat plugin,IChatAdaptor adaptor)
+    public ChatListener(ColorfulChat plugin,IColorGeneratePolicy policy)
     {
         _plugin = plugin;
-        _adaptor = adaptor;
+        _policy = policy;
     }
 
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent e){
         if(_plugin.getEnableTable().getOrDefault(e.getPlayer(),false))
         {
-            String msg = _adaptor.getColorfulString(e.getMessage());
+            String msg = _policy.getNextColorString(e.getMessage());
             e.setMessage(msg);
         }
     }
