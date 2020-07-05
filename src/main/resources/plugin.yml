@@ -3,8 +3,6 @@ main: kim.minecraft.colorfulchat.ColorfulChat
 version: 1.0-SNAPSHOT
 author: shaokeyibb & NaturalSharp
 
-api-version: 1.12
-
 commands:
   colorfulchat:
     description: "彩色聊天"
