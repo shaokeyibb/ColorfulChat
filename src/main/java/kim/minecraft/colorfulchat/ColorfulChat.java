@@ -26,16 +26,16 @@ public class ColorfulChat extends JavaPlugin {
     @Override
     public void onEnable(){
         
-        IChatAdaptor adaptor = null;
+        IColorGeneratePolicy policy = null;
         if(getServer().getBukkitVersion().contains("1.16"))
         {
-            adaptor = new DefaultChatAdaptor();
+            policy = new RandomRgbColorGeneratePolicy();
         }
         else
         {
-            adaptor = new LowChatAdaptor();
+            policy = new RandomColorGeneratePolicy();
         }
-        Bukkit.getPluginManager().registerEvents(new ChatListener(this,adaptor),this);
+        Bukkit.getPluginManager().registerEvents(new ChatListener(this,policy),this);
         PluginCommand command = Bukkit.getPluginCommand("colorfulchat");
         ChatCommandHandler handler = new ChatCommandHandler(this);
         command.setExecutor(handler);
