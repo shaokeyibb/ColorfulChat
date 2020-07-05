@@ -24,8 +24,8 @@ public class ChatCommandHandler implements CommandExecutor {
 
         Player player = (Player) commandSender;
 
-        if (_plugin.getEnableTable().containsKey(player)) {
-            _plugin.getEnableTable().put(player, !_plugin.getEnableTable().get(player));
+        if (_plugin.getEnableTable().containsKey(player) && _plugin.getEnableTable().get(player)) {
+            _plugin.getEnableTable().put(player,false);
         } else {
             _plugin.getEnableTable().put(player, true);
         }
