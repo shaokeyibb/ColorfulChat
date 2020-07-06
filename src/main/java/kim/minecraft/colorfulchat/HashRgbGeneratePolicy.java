@@ -39,7 +39,7 @@ public class HashRgbGeneratePolicy implements IColorGeneratePolicy {
         int red = getRedByHash(longHash) % 255;
         int blue = getBuleByHash(longHash) % 255;
         int green = getGreenByHash(longHash) % 255;
-        return Color.fromBGR(blue, green, red);
+        return Color.fromRGB(red, green, blue);
     }
 
     @Override
@@ -48,7 +48,7 @@ public class HashRgbGeneratePolicy implements IColorGeneratePolicy {
         for(int i =0;i<str.length();++i)
         {
             builder.append("§x");
-            for(char c:String.valueOf(getColor(str.charAt(i)).asBGR()).toCharArray())
+            for(char c:String.valueOf(getColor(str.charAt(i)).asRGB()).toCharArray())
             {
                 builder.append("§");
                 builder.append(c);
