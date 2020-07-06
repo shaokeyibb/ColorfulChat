@@ -10,32 +10,29 @@ import java.util.Map;
 
 public class ColorfulChat extends JavaPlugin {
 
-    private Map<Player,Boolean> _enableTable;
+    private final Map<Player, Boolean> _enableTable;
 
-    public Map<Player,Boolean> getEnableTable()
-    {
+    public Map<Player, Boolean> getEnableTable() {
         return _enableTable;
     }
 
-    public ColorfulChat()
-    {
+    public ColorfulChat() {
         _enableTable = new HashMap<>();
     }
 
 
     @Override
-    public void onEnable(){
-        
-        IColorGeneratePolicy policy = null;
-        if(getServer().getBukkitVersion().contains("1.16"))
-        {
+    public void onEnable() {
+
+        IColorGeneratePolicy policy;
+        try {
+            net.md_5.bungee.api.ChatColor.of("#66ccff");
             policy = new GradientRgbGeneratePolicy();
-        }
-        else
-        {
+        } catch (Throwable ignore) {
             policy = new GradientGeneratePolicy();
         }
-        Bukkit.getPluginManager().registerEvents(new ChatListener(this,policy),this);
+        getLogger().info("Using " + policy.getClass().getSimpleName());
+        Bukkit.getPluginManager().registerEvents(new ChatListener(this, policy), this);
         PluginCommand command = Bukkit.getPluginCommand("colorfulchat");
         ChatCommandHandler handler = new ChatCommandHandler(this);
         command.setExecutor(handler);

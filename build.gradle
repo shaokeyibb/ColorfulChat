@@ -18,13 +18,14 @@ repositories {
     maven { url "http://repo.ptms.ink/repository/codemc-nms/" }
     maven { url "http://repo.ptms.ink/repository/maven-releases/" }
     maven { url "https://maven.aliyun.com/repository/public/" }
-    maven { url "https://hub.spigotmc.org/nexus/content/repositories/snapshots/"}
-    maven { url "https://hub.spigotmc.org/nexus/content/repositories/public"}
+    maven { url "https://hub.spigotmc.org/nexus/content/repositories/snapshots/" }
+    maven { url "https://hub.spigotmc.org/nexus/content/repositories/public" }
     mavenCentral()
 }
 
 dependencies {
     compile 'org.spigotmc:spigot-api:1.12.2-R0.1-SNAPSHOT'
+    compile 'net.md-5:bungeecord-chat:1.16-R0.2-SNAPSHOT'
     compileOnly 'org.projectlombok:lombok:1.18.12'
     annotationProcessor 'org.projectlombok:lombok:1.18.12'
     testCompileOnly 'org.projectlombok:lombok:1.18.12'

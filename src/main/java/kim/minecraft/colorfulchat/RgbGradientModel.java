@@ -1,18 +1,16 @@
 package kim.minecraft.colorfulchat;
 
-import org.bukkit.Color;
+import java.awt.*;
 
 public class RgbGradientModel {
     public Color begin;
 
     public Color end;
 
-    public static RgbGradientModel make(int r,int g,int b,int R,int G,int B) {
-        Color begin = Color.fromRGB(r, g, b);
-        Color end = Color.fromRGB(R,G,B);
+    public static RgbGradientModel make(int r, int g, int b, int R, int G, int B) {
         RgbGradientModel model = new RgbGradientModel();
-        model.begin = begin;
-        model.end = end;
+        model.begin = new Color(r, g, b);
+        model.end = new Color(R, G, B);
         return model;
     }
 }

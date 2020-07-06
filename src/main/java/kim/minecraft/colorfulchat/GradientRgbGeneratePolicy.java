@@ -1,55 +1,61 @@
 package kim.minecraft.colorfulchat;
 
+import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.TextComponent;
+
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import org.bukkit.Color;
-
 public class GradientRgbGeneratePolicy implements IColorGeneratePolicy {
 
-    private List<RgbGradientModel> _models;
+    private final List<RgbGradientModel> _models;
 
-    private Random _random;
+    private final Random _random;
 
-    public GradientRgbGeneratePolicy()
-    {
+    public GradientRgbGeneratePolicy() {
         _models = new ArrayList<>();
         //_models.add(RgbGradientModel.make(0, 255, 255, 255, 255, 255));
         //_models.add(RgbGradientModel.make(255, 255, 0, 255, 255, 255));
         //_models.add(RgbGradientModel.make(255, 0, 255, 255, 255, 255));
-        
-        _models.add(RgbGradientModel.make(255, 0, 0, 255, 127,0));
+
+        _models.add(RgbGradientModel.make(255, 0, 0, 255, 127, 0));
         //_models.add(RgbGradientModel.make(255, 127, 0, 255, 255, 0));
-        _models.add(RgbGradientModel.make(255, 255, 0,0,255,0));
+        _models.add(RgbGradientModel.make(255, 255, 0, 0, 255, 0));
         //_models.add(RgbGradientModel.make(0,255,0,0,255,255));
-        _models.add(RgbGradientModel.make(0,255,255,0,0,255));
-        _models.add(RgbGradientModel.make(0,0,255,0x0b,00,255));
+        _models.add(RgbGradientModel.make(0, 255, 255, 0, 0, 255));
+        _models.add(RgbGradientModel.make(0, 0, 255, 0x0b, 00, 255));
         _random = new Random();
     }
 
-    private int getGradientNumber(int a,int b,int step,int n)
-    {
-        int r = a + (b-a)/step * n;
-        return r;
+    private static int getGradientNumber(int a, int b, int step, int n) {
+        if (b > a) {
+            int c = a;
+            a = b;
+            b = c;
+        }
+        return (b + ((a - b) * n / step)); // & 0xFF;
     }
 
-    private Color getGradientColor(Color from,Color to,int step,int n)
-    {
-        int a = from.getBlue();
-        int b = to.getBlue();
-        int blue = getGradientNumber(a, b,step,n);
-        a = from.getGreen();
-        b = to.getGreen();
-        int green = getGradientNumber(a, b, step, n);
-        a = from.getRed();
-        b = to.getRed();
-        int red = getGradientNumber(a, b, step, n);
-        return Color.fromBGR(blue, green, red);
+    public static void main(String[] args) {
+        int from = 0, to = 255;
+        int step = 50;
+        for (int i = 0; i < step; i++) {
+            System.out.println(getGradientNumber(from, to, step - 1, i));
+        }
     }
 
-    private RgbGradientModel getColorModel()
-    {
+    private Color getGradientColor(Color from, Color to, int step, int n) {
+        return new Color(
+                getGradientNumber(from.getRed(), to.getRed(), step, n),
+                getGradientNumber(from.getGreen(), to.getGreen(), step, n),
+                getGradientNumber(from.getBlue(), to.getBlue(), step, n)
+        );
+    }
+
+    private RgbGradientModel getColorModel() {
         int index = _random.nextInt(_models.size());
         return _models.get(index);
     }
@@ -57,20 +63,13 @@ public class GradientRgbGeneratePolicy implements IColorGeneratePolicy {
     @Override
     public String getNextColorString(String str) {
         int step = str.length();
-        StringBuilder builder = new StringBuilder();
-        for(int i =0 ;i < step;i++)
-        {
-            RgbGradientModel model = getColorModel();
-            Color color = getGradientColor(model.begin,model.end, step, i);
-            builder.append("§x");
-            for(char c : String.valueOf(color.asRGB()).toCharArray())
-            {
-                builder.append("§");
-                builder.append(c);
-            }
-            builder.append(str.charAt(i));
+        RgbGradientModel model = getColorModel();
+        ComponentBuilder builder = new ComponentBuilder();
+        for (int i = 0; i < step; i++) {
+            Color color = getGradientColor(model.begin, model.end, step - 1, i);
+            builder.append(String.valueOf(str.charAt(i))).color(ChatColor.of(color));
         }
-        return builder.toString();
+        return new TextComponent(builder.create()).toLegacyText();
     }
-    
+
 }
