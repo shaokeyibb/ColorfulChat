@@ -1,10 +1,10 @@
 # ColorfulChat
 
-A simple minecraft plugin base on bukkit api.  
+A simple minecraft plugin base on bukkit api which could make your chat more colorful.  
 
 ## Usage
 
-Use command `/colorfulchat` to enable function
+Use command `/colorfulchat` to enable the function
 
 ## Install
 

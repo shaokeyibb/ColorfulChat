@@ -29,11 +29,11 @@ public class ColorfulChat extends JavaPlugin {
         IColorGeneratePolicy policy = null;
         if(getServer().getBukkitVersion().contains("1.16"))
         {
-            policy = new RandomRgbGeneratePolicy();
+            policy = new GradientRgbGeneratePolicy();
         }
         else
         {
-            policy = new RandomGeneratePolicy();
+            policy = new GradientGeneratePolicy();
         }
         Bukkit.getPluginManager().registerEvents(new ChatListener(this,policy),this);
         PluginCommand command = Bukkit.getPluginCommand("colorfulchat");
