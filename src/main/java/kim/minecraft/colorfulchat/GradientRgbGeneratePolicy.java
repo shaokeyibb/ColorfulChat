@@ -63,7 +63,7 @@ public class GradientRgbGeneratePolicy implements IColorGeneratePolicy {
             RgbGradientModel model = getColorModel();
             Color color = getGradientColor(model.begin,model.end, step, i);
             builder.append("§x");
-            for(char c : String.valueOf(color.asBGR()).toCharArray())
+            for(char c : String.valueOf(color.asRGB()).toCharArray())
             {
                 builder.append("§");
                 builder.append(c);
