@@ -17,14 +17,10 @@ public class GradientRgbGeneratePolicy implements IColorGeneratePolicy {
 
     public GradientRgbGeneratePolicy() {
         _models = new ArrayList<>();
-        //_models.add(RgbGradientModel.make(0, 255, 255, 255, 255, 255));
-        //_models.add(RgbGradientModel.make(255, 255, 0, 255, 255, 255));
-        //_models.add(RgbGradientModel.make(255, 0, 255, 255, 255, 255));
-
         _models.add(RgbGradientModel.make(255, 0, 0, 255, 127, 0));
-        //_models.add(RgbGradientModel.make(255, 127, 0, 255, 255, 0));
+        _models.add(RgbGradientModel.make(255, 127, 0, 255, 255, 0));
         _models.add(RgbGradientModel.make(255, 255, 0, 0, 255, 0));
-        //_models.add(RgbGradientModel.make(0,255,0,0,255,255));
+        _models.add(RgbGradientModel.make(0,255,0,0,255,255));
         _models.add(RgbGradientModel.make(0, 255, 255, 0, 0, 255));
         _models.add(RgbGradientModel.make(0, 0, 255, 0x0b, 00, 255));
         _random = new Random();
@@ -36,15 +32,7 @@ public class GradientRgbGeneratePolicy implements IColorGeneratePolicy {
             a = b;
             b = c;
         }
-        return (b + ((a - b) * n / step)); // & 0xFF;
-    }
-
-    public static void main(String[] args) {
-        int from = 0, to = 255;
-        int step = 50;
-        for (int i = 0; i < step; i++) {
-            System.out.println(getGradientNumber(from, to, step - 1, i));
-        }
+        return (b + ((a - b) * n / step)); 
     }
 
     private Color getGradientColor(Color from, Color to, int step, int n) {
