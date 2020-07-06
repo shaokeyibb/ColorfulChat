@@ -15,7 +15,7 @@ public class RandomRgbGeneratePolicy implements IColorGeneratePolicy {
 
     private Color generateColor()
     {
-        return Color.fromBGR(_random.nextInt(255),_random.nextInt(255),_random.nextInt(255));
+        return Color.fromRGB(_random.nextInt(255),_random.nextInt(255),_random.nextInt(255));
     }
 
     @Override
