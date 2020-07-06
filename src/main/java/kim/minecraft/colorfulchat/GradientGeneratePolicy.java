@@ -15,7 +15,7 @@ public class GradientGeneratePolicy implements IColorGeneratePolicy {
         i %= _colors.length;
         if((count % 2) != 0)
         {
-            return Math.abs(i - _colors.length);
+            return Math.abs(i - (_colors.length-1));
         }
         return i;
     }

@@ -36,9 +36,9 @@ public class HashRgbGeneratePolicy implements IColorGeneratePolicy {
         Integer i = (int)c;
         int hash = i.hashCode();
         long longHash = getLongHash(hash);
-        int red = getRedByHash(longHash);
-        int blue = getBuleByHash(longHash);
-        int green = getGreenByHash(longHash);
+        int red = getRedByHash(longHash) % 255;
+        int blue = getBuleByHash(longHash) % 255;
+        int green = getGreenByHash(longHash) % 255;
         return Color.fromBGR(blue, green, red);
     }
 

@@ -20,7 +20,7 @@ public class GradientRgbGeneratePolicy implements IColorGeneratePolicy {
 
     private int getGradientNumber(int a,int b,int step,int n)
     {
-        int r = (a + (b-a))/step * n;
+        int r = a + (b-a)/step * n;
         return r;
     }
 
