@@ -33,8 +33,8 @@ public class HashRgbGeneratePolicy implements IColorGeneratePolicy {
 
     private Color getColor(char c)
     {
-        Integer i = (int)c;
-        int hash = i.hashCode();
+        int[] chs = {c-1,c,c+1,c+2};
+        int hash = chs.hashCode();
         long longHash = getLongHash(hash);
         int red = getRedByHash(longHash) % 255;
         int blue = getBuleByHash(longHash) % 255;
