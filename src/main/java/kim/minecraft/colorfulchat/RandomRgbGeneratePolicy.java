@@ -4,11 +4,11 @@ import java.util.Random;
 
 import org.bukkit.Color;
 
-public class RandomRgbColorGeneratePolicy implements IColorGeneratePolicy {
+public class RandomRgbGeneratePolicy implements IColorGeneratePolicy {
 
     private Random _random;
 
-    public RandomRgbColorGeneratePolicy()
+    public RandomRgbGeneratePolicy()
     {
         _random = new Random();
     }

@@ -2,13 +2,13 @@ package kim.minecraft.colorfulchat;
 
 import java.util.Random;
 
-public class RandomColorGeneratePolicy implements IColorGeneratePolicy {
+public class RandomGeneratePolicy implements IColorGeneratePolicy {
 
     private Random _random;
 
     private char[] _colorCodes;
 
-    public RandomColorGeneratePolicy()
+    public RandomGeneratePolicy()
     {
         _random = new Random();
         _colorCodes = "0123456789abcdef".toCharArray();

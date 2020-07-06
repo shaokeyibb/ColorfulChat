@@ -1,10 +1,10 @@
 package kim.minecraft.colorfulchat;
 
-public class HashColorGeneratePolicy implements IColorGeneratePolicy {
+public class HashGeneratePolicy implements IColorGeneratePolicy {
 
     private char[] _colorCodes;
 
-    public HashColorGeneratePolicy()
+    public HashGeneratePolicy()
     {
         _colorCodes = "0123456789abcderf".toCharArray();
     }
