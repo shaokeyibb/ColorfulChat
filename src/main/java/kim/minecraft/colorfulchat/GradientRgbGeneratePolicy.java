@@ -36,6 +36,8 @@ public class GradientRgbGeneratePolicy implements IColorGeneratePolicy {
     }
 
     private Color getGradientColor(Color from, Color to, int step, int n) {
+        // java.lang.ArithmeticException: / by zero
+        if (step == 1) return from;
         return new Color(
                 getGradientNumber(from.getRed(), to.getRed(), step, n),
                 getGradientNumber(from.getGreen(), to.getGreen(), step, n),
